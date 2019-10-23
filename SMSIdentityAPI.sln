@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIdentityApi", "SMSIdentityApi\SMSIdentityApi.csproj", "{30F53C87-AB6E-4A02-98AA-91243521FD9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraStructure", "Infrastructure\InfraStructure\InfraStructure.csproj", "{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{30F53C87-AB6E-4A02-98AA-91243521FD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F53C87-AB6E-4A02-98AA-91243521FD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F53C87-AB6E-4A02-98AA-91243521FD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
