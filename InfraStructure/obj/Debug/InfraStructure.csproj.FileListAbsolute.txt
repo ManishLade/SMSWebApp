@@ -1,0 +1,10 @@
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\bin\Debug\InfraStructure.dll.config
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\bin\Debug\InfraStructure.dll
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\bin\Debug\InfraStructure.pdb
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\bin\Debug\EntityFramework.dll
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\obj\Debug\InfraStructure.csprojAssemblyReference.cache
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\obj\Debug\InfraStructure.csproj.CoreCompileInputs.cache
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\obj\Debug\InfraStructure.csproj.CopyComplete
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\obj\Debug\InfraStructure.dll
+C:\Users\hadmin\Downloads\DK\SMSApp\SMSApp\IdentityAPI\InfraStructure\obj\Debug\InfraStructure.pdb

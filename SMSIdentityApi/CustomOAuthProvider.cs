@@ -45,12 +45,12 @@ namespace SMSIdentityApi
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             //Dummy check here, you need to do your DB checks against membership system http://bit.ly/SPAAuthCode
-            if (context.UserName != context.Password)
-            {
-                context.SetError("invalid_grant", "The user name or password is incorrect");
-                return;
-                //return Task.FromResult<object>(null);
-            }
+            //if (context.UserName != context.Password)
+            //{
+            //    context.SetError("invalid_grant", "The user name or password is incorrect");
+            //    return;
+            //    //return Task.FromResult<object>(null);
+            //}
 
             var identity = new ClaimsIdentity("JWT");
 
