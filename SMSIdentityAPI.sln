@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIdentityApi", "SMSIdenti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraStructure", "InfraStructure\InfraStructure.csproj", "{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{CF416AF8-4D52-4FC9-AC7F-DF9261CCFB72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7FD835C-5B45-45D1-8D51-5A5DB68F8AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF416AF8-4D52-4FC9-AC7F-DF9261CCFB72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF416AF8-4D52-4FC9-AC7F-DF9261CCFB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF416AF8-4D52-4FC9-AC7F-DF9261CCFB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF416AF8-4D52-4FC9-AC7F-DF9261CCFB72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

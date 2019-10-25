@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using InfraStructure.Repository;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 
@@ -8,6 +9,12 @@ namespace SMSIdentityApi
 {
     public class CustomOAuthProvider : OAuthAuthorizationServerProvider
     {
+        readonly IUserRepository userRepository;
+
+        public CustomOAuthProvider(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
@@ -43,14 +50,14 @@ namespace SMSIdentityApi
             System.Diagnostics.Debugger.Break();
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            var isAuthenticated = userRepository.VerifyUser(context.UserName, context.Password);
 
-            //Dummy check here, you need to do your DB checks against membership system http://bit.ly/SPAAuthCode
-            //if (context.UserName != context.Password)
-            //{
-            //    context.SetError("invalid_grant", "The user name or password is incorrect");
-            //    return;
-            //    //return Task.FromResult<object>(null);
-            //}
+            if (isAuthenticated)
+            {
+                context.SetError("invalid_grant", "The user name or password is incorrect");
+                return;
+                //return Task.FromResult<object>(null);
+            }
 
             var identity = new ClaimsIdentity("JWT");
 

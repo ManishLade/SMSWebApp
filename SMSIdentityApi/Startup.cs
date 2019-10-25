@@ -1,10 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿using Autofac;
+using Autofac.Integration.Owin;
+using Autofac.Integration.WebApi;
+using Data;
+using InfraStructure.Repository;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using System;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
 
 [assembly: OwinStartup(typeof(SMSIdentityApi.Startup))]
 
@@ -19,7 +25,30 @@ namespace SMSIdentityApi
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.SuppressDefaultHostAuthentication();
-           
+
+            // DI using Autofac
+            var builder = new ContainerBuilder();
+
+            // Get your HttpConfiguration.
+            //var config = GlobalConfiguration.Configuration;
+
+            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<CableIdentityDbContext>().InstancePerRequest();
+
+            // Register your Web API controllers.
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterWebApiFilterProvider(config);
+            builder.RegisterWebApiModelBinderProvider();
+
+            // Set the dependency resolver to be Autofac.
+            var container = builder.Build();
+            IUserRepository userRepository = new UserRepository(new CableIdentityDbContext());
+            //using (var scope = container.sc())
+            //{
+            //    userRepository = scope.Resolve<IUserRepository>();
+            //}
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
             // Web API routes
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
@@ -28,14 +57,17 @@ namespace SMSIdentityApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            ConfigureOAuth(app);
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
+            //var userRepository = (IUserRepository)DependencyResolver.Current.GetService(typeof(IUserRepository));
+            ConfigureOAuth(app, userRepository);
 
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
         }
 
-        public void ConfigureOAuth(IAppBuilder app)
+        public void ConfigureOAuth(IAppBuilder app, IUserRepository userRepository)
         {
 
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
@@ -44,7 +76,7 @@ namespace SMSIdentityApi
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth2/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                Provider = new CustomOAuthProvider(),
+                Provider = new CustomOAuthProvider(userRepository),
                 AccessTokenFormat = new CustomJwtFormat("http://jwtauthzsrv.azurewebsites.net"),
                 AuthenticationMode = AuthenticationMode.Active
             };
